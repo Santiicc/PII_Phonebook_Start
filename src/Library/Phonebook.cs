@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace Library
 {
@@ -41,13 +42,20 @@ namespace Library
             this.persons.Remove(persona);
         }
 
-        public void Enviar(string[] names, Message mensaje, IMessageChannel channel)
+        public void Enviar(Contact namex, Message mensaje, IMessageChannel channel)
         {
-            List<Contact> contacts = this.Search(names);
 
-            foreach (Contact contact in contacts)
+            foreach (Contact person in this.persons)
             {
-                channel.Send(mensaje);
+                if (person == namex)
+                {
+                    channel.Send(mensaje);
+                    Console.WriteLine("Hola");
+                }
+                else
+                {
+                    Console.WriteLine($"{person.Phone} hola");
+                }
             }
         }
 
