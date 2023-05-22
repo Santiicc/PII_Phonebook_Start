@@ -31,5 +31,25 @@ namespace Library
 
             return result;
         }
+        public void AddContacto (Contact persona)
+        {
+            this.persons.Add(persona);
+        }
+
+        public void RemoveContacto(Contact persona)
+        {
+            this.persons.Remove(persona);
+        }
+
+        public void Enviar(string[] names, Message mensaje, IMessageChannel channel)
+        {
+            List<Contact> contacts = this.Search(names);
+
+            foreach (Contact contact in contacts)
+            {
+                channel.Send(mensaje);
+            }
+        }
+
     }
 }

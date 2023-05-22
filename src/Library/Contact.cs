@@ -2,9 +2,10 @@
 {
     public class Contact
     {
-        public Contact(string name)
+        public Contact(string name, string Phone, string Email)
         {
             this.Name = name;
+            
         }
 
         public string Name { get; set; }
